@@ -45,6 +45,19 @@
    <!-- Spinner Start -->
 
 
+<div id="loader">
+    <div class="spinner-container">
+        <img src="{{ asset('img/img-fav-01.png') }}" alt="Logo" class="logo-loader">
+
+        <div class="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <p>Cargando...</p>
+    </div>
+</div>
+
 <!-- Spinner End -->
      @include('partials.topbar')
     <!-- Spinner End -->
@@ -81,7 +94,11 @@
     <!-- Scripts -->
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
-
+<script>
+    window.addEventListener('load', function () {
+        document.getElementById('loader').style.display = 'none';
+    });
+</script>
 </body>
 
 </html>

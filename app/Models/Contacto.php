@@ -13,6 +13,13 @@ class Contacto extends Model
     'email',
     'asunto',
     'mensaje',
-    'acepta_politica'
+    'ip',
+    'dispositivo',
+    'acepta_politica',
+    'fecha_consentimiento'
 ];
+ protected $casts = [
+        'acepta_politica' => 'boolean',
+        'fecha_consentimiento' => 'datetime',
+    ];
 }

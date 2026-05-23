@@ -50,7 +50,7 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="credit-card-modern shadow h-100">
                     <div class="credit-thumb">
-                        <img src="{{ asset('img/credito1.jpg') }}" alt="Productivo">
+                        <img src="{{ asset('img/productivo.png') }}" alt="Productivo">
                         <div class="credit-badge shadow"><i class="fa fa-chart-line text-warning"></i></div>
                     </div>
                     <div class="credit-body p-4 pt-5 text-center bg-white">
@@ -70,7 +70,7 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                 <div class="credit-card-modern shadow h-100">
                     <div class="credit-thumb">
-                        <img src="{{ asset('img/credito2.jpg') }}" alt="Consumo">
+                        <img src="{{ asset('img/consumo.png') }}" alt="Consumo">
                         <div class="credit-badge shadow"><i class="fa fa-shopping-cart text-info"></i></div>
                     </div>
                     <div class="credit-body p-4 pt-5 text-center bg-white">
@@ -90,7 +90,7 @@
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                 <div class="credit-card-modern shadow h-100">
                     <div class="credit-thumb">
-                        <img src="{{ asset('img/credito3.jpg') }}" alt="Educativo">
+                        <img src="{{ asset('img/educativo.png') }}" alt="Educativo">
                         <div class="credit-badge shadow"><i class="fa fa-graduation-cap text-success"></i></div>
                     </div>
                     <div class="credit-body p-4 pt-5 text-center bg-white">
