@@ -1,0 +1,1067 @@
+/* Colores Institucionales */
+.text-primary { color: #f3d512  !important; }
+.bg-primary { background-color: #FBC115 !important; }
+.border-primary { border-color: #dad71a !important; }
+
+.bg-warning-dark { 
+    background-color: #f3d512  !important; /* El tono ocre/dorado del centro */
+}
+
+.text-warning-dark { 
+    color: #FBC115  !important; 
+}
+
+.text-dark-blue { 
+    color: #002b5c !important; /* Color para los números sobre el fondo dorado */
+}
+
+/* Elevación de la sección sobre el carrusel */
+.facts {
+    margin-top: -75px;
+    position: relative;
+    z-index: 10;
+}
+
+/* Estilo para que los títulos no se rompan */
+.facts p {
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+.facts h1 {
+    font-family: 'Arial Black', sans-serif; /* O la fuente que uses en el proyecto */
+}
+/* ===================== GENERALES ===================== */
+.opacity-10 {
+    opacity: 0.05;
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.border-start {
+    border-left: 5px solid;
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+}
+
+.btn-primary {
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Decoración Sobre Nosotros */
+.dot-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: #f3d512 ;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.dot-indicator:first-child { opacity: 1; width: 12px; border-radius: 5px; }
+
+/* Tarjetas de Beneficios */
+.benefit-card {
+    transition: 0.3s;
+    border: 1px solid #f0f0f0;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+}
+
+.icon-box {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+/* Panel de Pago (Derecha) */
+.rounded-custom {
+    border-radius: 60px 20px 60px 20px;
+    background: #fff;
+    border: 1px solid #eee;
+}
+
+.payment-card-main {
+    background-image: radial-gradient(circle at 10% 10%, #fff9f0 0%, #ffffff 50%);
+    overflow: hidden;
+}
+
+.img-colaboradora {
+    position: absolute;
+    bottom: 0;
+    right: -50px;
+    height: 90%;
+    z-index: 2;
+}
+
+.grayscale {
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.grayscale:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Responsivo */
+@media (max-width: 991px) {
+    .img-colaboradora { display: none; }
+    .rounded-custom { border-radius: 30px; }
+}
+.rounded-custom {
+    /* Crea el efecto de bordes redondeados en diagonal (60px y 20px) */
+    border-radius: 60px 20px 60px 20px; 
+    background: #fff;
+    border: 1px solid #eee;
+    z-index: 1;
+}
+
+.payment-card-main {
+    height: 100%;
+    min-height: 500px;
+    display: block;
+}
+
+/* Asegura que la imagen respete los bordes del contenedor */
+.payment-card-main img {
+    z-index: -1;
+    transition: transform 0.5s ease;
+}
+/* ===================== PRODUCTOS ===================== */
+/* Colores institucionales */
+.text-primary-blue { color: #002b5c; }
+.custom-hr {
+    width: 60px;
+    height: 4px;
+    background-color: #F39C12;
+    border: none;
+    opacity: 1;
+}
+
+/* Diseño de la Tarjeta */
+.product-card {
+    background: #fff;
+    border-radius: 30px; /* Bordes muy redondeados como en la imagen */
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    height: 100%;
+    padding-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Encabezado con imagen curva */
+.image-header {
+    position: relative;
+    height: 280px;
+}
+
+.image-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Crea la curva cóncava inferior */
+    clip-path: ellipse(110% 85% at 50% 12%);
+}
+
+/* Etiqueta flotante con frase */
+.floating-quote {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px;
+    border-radius: 12px;
+    max-width: 140px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+}
+
+.floating-quote::before {
+    content: "“";
+    color: #F39C12;
+    font-size: 2rem;
+    position: absolute;
+    top: -10px;
+    left: 0;
+}
+
+/* Icono circular central */
+.badge-icon {
+    width: 65px;
+    height: 65px;
+    background: #f3d512 ;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid #fff;
+}
+
+/* Contenido de la tarjeta */
+.card-body-content {
+    padding: 40px 20px 20px 20px;
+}
+
+.btn-conoce-mas {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    color: #444;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-conoce-mas i {
+    color: #e0f312;
+    margin-left: 8px;
+}
+
+.btn-conoce-mas:hover {
+    background: #f8f9fa;
+    border-color: #bebe0a;
+}
+
+
+
+
+/* ===================== TARJETAS ===================== */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.card img {
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+/* ===================== SIMULADOR ===================== */
+.simulador-box {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transition: 0.4s;
+}
+
+.simulador-box:hover {
+    transform: translateY(-10px);
+}
+
+.simulador-box input,
+.simulador-box select {
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.simulador-box input:focus,
+.simulador-box select:focus {
+    border-color: #ffc107;
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+.simulador-box .btn {
+    background: linear-gradient(45deg, #ffc107, #ff9800);
+    border: none;
+    font-weight: bold;
+}
+
+.simulador-box .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255, 193, 7, 0.6);
+}
+
+#resultado {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+/* ===================== CAROUSEL ===================== */
+
+
+.carousel-caption {
+    background: linear-gradient(180deg, transparent, rgba(245, 253, 5, 0));
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: #fffb07e6;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #ffff07;
+    border-radius: 50%;
+    padding: 15px;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    transform: scale(1.2);
+}
+
+/* ===================== BANNER ===================== */
+.inv-banner-text {
+    background: linear-gradient(135deg, #f5f5f5, #eeeeee);
+    min-height: 400px;
+}
+
+.inv-highlight {
+    background: #4a4a4a;
+    color: #ffc107;
+    padding: 15px 25px;
+    border-radius: 30px;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.inv-banner-img img {
+    height: auto;
+    width: auto;
+    object-fit: cover;
+}
+
+.inv-banner-img:hover img {
+    transform: scale(1.05);
+}
+
+/* ===================== CARDS INV ===================== */
+.inv-card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.4s;
+}
+
+.inv-card:hover {
+    transform: translateY(-10px);
+}
+
+.inv-card .icon {
+    font-size: 40px;
+    color: #ffc107;
+}
+
+/* ===================== SIMULADOR INV ===================== */
+.simulador-inv {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    padding: 35px;
+    border-radius: 20px;
+}
+
+.simulador-inv input {
+    border-radius: 12px;
+    border: 1px solid #ddd;
+}
+
+.simulador-inv input:focus {
+    border-color: #ffc107;
+}
+
+.simulador-inv .btn {
+    background: linear-gradient(45deg, #ffc107, #ff9800);
+    border: none;
+    font-weight: bold;
+}
+
+.resultado-inv {
+    background: #fff3cd;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* ===================== AHORRO ===================== */
+.ahorro-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.ahorro-card:hover {
+    transform: translateY(-10px);
+}
+
+.ahorro-card .icon {
+    font-size: 40px;
+    color: #ffc107;
+}
+
+.requisitos-box {
+    background: #ffffff;
+    border-radius: 20px;
+}
+
+.req-item {
+    padding: 20px;
+}
+
+.req-item .icon {
+    font-size: 35px;
+    color: #ffc107;
+}
+
+.req-item:hover {
+    transform: scale(1.1);
+}
+
+/* ===================== ANIMACIONES ===================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* =============================== AGENICIAS =============*/
+.agencia-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.agencia-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.agencia-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.agencia-card .btn {
+    transition: 0.3s;
+}
+
+.agencia-card .btn:hover {
+    transform: scale(1.05);
+}
+/* Sección contenedora */
+.custom-offer-section {
+   /* Asegura que la imagen cubra todo el espacio */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* Activa el efecto Parallax */
+    background-attachment: fixed;
+    
+    /* Altura mínima para que el efecto sea apreciable */
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+}
+
+/* Efecto de cristal para los iconos superiores */
+.glass-icon {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Bordes divisorios verticales solo en Desktop */
+@media (min-width: 992px) {
+    .border-end-custom {
+        border-right: 1px solid rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Panel flotante inferior */
+.floating-panel {
+    transform: translateY(80px); /* Ajusta según cuánto quieras que sobresalga */
+    z-index: 10;
+}
+
+.text-light-50 {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+
+
+/* EFECTO HOVER SUAVE */
+.vendor-carousel img:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* SEPARADOR MÁS SUAVE */
+.border-end {
+    border-right: 1px solid rgba(0,0,0,0.08) !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+    .border-end {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+
+    .vendor-carousel .item {
+        height: 60px;
+    }
+
+    .vendor-carousel img {
+        max-height: 45px;
+    }
+}
+
+/* Estilos para las tarjetas de ahorro */
+.saving-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.card-orange { border-top: 5px solid #F39C12; }
+.card-blue { border-top: 5px solid #0056b3; }
+
+.account-icon {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border: 3px solid #eee;
+}
+
+.border-orange { border-color: #f3ef12 !important; opacity: 1; }
+.border-blue { border-color: #0056b3 !important; opacity: 1; }
+
+.floating-illustration {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 120px;
+    opacity: 0.1; /* Efecto sutil de fondo */
+    transition: 0.3s;
+}
+
+.saving-card:hover .floating-illustration {
+    opacity: 0.8;
+    transform: scale(1.1) rotate(-10deg);
+}
+
+/* Panel de Requisitos */
+.border-orange-bottom {
+    border-bottom: 8px solid #F39C12 !important;
+}
+
+.icon-3d-wrapper {
+    width: 80px;
+    height: 80px;
+    background: #f1f1f1;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checklist li i {
+    font-size: 1.2rem;
+}
+
+/* Animación suave tipo fade + slide */
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeUp {
+    animation: fadeUp 1s ease forwards;
+}
+
+/* Efecto hover tarjetas */
+.saving-card {
+    transition: all 0.4s ease;
+    transform: translateY(0);
+}
+
+.saving-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Animación iconos */
+.icon-3d-wrapper {
+    transition: all 0.4s ease;
+}
+
+.icon-3d-wrapper:hover {
+    transform: rotateY(180deg) scale(1.1);
+}
+
+/* Animación imágenes flotantes */
+.floating-illustration {
+    position: absolute;
+    width: 60px;
+    opacity: 0.9;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+
+
+/* Estilo del botón principal */
+.btn-primary {
+    background-color: #f3d512 ;
+    border: none;
+    font-weight: 600;
+    transition: 0.5s;
+}
+
+
+
+/* Efectos en la lista de beneficios */
+.benefit-list .d-flex {
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.benefit-list .d-flex:hover {
+    transform: translateX(10px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ajuste de tipografía para el cuadro de la imagen */
+.display-6 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+/* Cuadrados de iconos */
+.btn-lg-square {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-sm-square {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Colores y Líneas */
+.text-dark-blue { color: #002b5c !important; }
+.line-yellow-pujili { width: 35px; height: 4px; background: #f1d919; border-radius: 2px; }
+
+/* Selector de Años */
+.btn-year-capsule {
+    border: none;
+    background: #fff;
+    color: #888;
+    padding: 10px 30px;
+    border-radius: 15px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+.btn-year-capsule.active {
+    background: #f1d919;
+    color: #000;
+}
+
+/* Línea de Tiempo */
+.timeline-visual-nav { display: flex; align-items: center; position: relative; }
+.timeline-track-main { flex-grow: 1; height: 4px; background: #eee; margin: 0 20px; position: relative; }
+.timeline-fill-active { position: absolute; height: 100%; background: #f1d919; transition: 0.8s; }
+.marker-dot { position: absolute; width: 12px; height: 12px; background: #ddd; border-radius: 50%; top: 50%; transform: translate(-50%, -50%); }
+
+.current-year-marker {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #f1d919;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 5;
+}
+
+/* Navegación */
+.nav-btn-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #f1d919;
+    border: none;
+    color: #000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+.nav-btn-circle:hover { background: #002b5c; color: #fff; }
+
+/* Tarjeta de Hito */
+.history-card-pujili {
+    background: #fff;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s;
+}
+.yellow-border-accent { position: absolute; left: 0; width: 8px; height: 100%; background: #f1d919; }
+.badge-year-label { background: rgba(241, 217, 25, 0.2); color: #d4ac0d; padding: 5px 15px; border-radius: 8px; font-weight: bold; }
+.icon-circle-bg { width: 130px; height: 130px; background: #f8f9fa; border-radius: 50%; align-items: center; justify-content: center; }
+
+/* Dots Inferiores */
+.track-dot { width: 10px; height: 10px; background: #ddd; border-radius: 50%; transition: 0.3s; }
+.track-dot.active { width: 25px; background: #f1d919; border-radius: 10px; }
+
+/* Barras Superiores */
+.p-bar { width: 25px; height: 4px; background: #eee; border-radius: 10px; }
+.p-bar.active { background: #f1d919; }
+
+
+/* Tarjetas Estilo image_9044bd.png */
+.credit-card-modern {
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+    transition: 0.3s;
+}
+
+.credit-card-modern:hover {
+    transform: translateY(-10px);
+}
+
+.credit-thumb {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.credit-thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+.credit-badge {
+    position: absolute;
+    bottom: -30px; left: 50%;
+    transform: translateX(-50%);
+    width: 65px; height: 65px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    z-index: 10;
+}
+
+.credit-body {
+    border-radius: 0 0 20px 20px;
+}
+
+.credit-body ul li {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.line-yellow-center {
+    width: 60px; height: 4px; background: #f1d919; border-radius: 10px;
+}
+
+.shadow-text {
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.btn-ver-mas {
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.btn-ver-mas:hover {
+    letter-spacing: 1px;
+}
+
+/* Efecto de cristal para el simulador */
+
+
+/* Fondo de la sección completa */
+.section-simulador {
+    background-attachment: fixed !important; /* Efecto Parallax */
+    position: relative;
+}
+
+/* Estilo del Banner Izquierdo (Promo) */
+.banner-promo {
+    background: #ffffff; /* O una imagen degradada */
+    position: relative;
+}
+
+.overlay-banner h2 span {
+    color: #F39C12;
+}
+
+.overlay-banner h1 {
+    letter-spacing: 2px;
+    color: #002b5c;
+}
+
+/* Bordes redondeados modernos */
+.rounded-4 {
+    border-radius: 1.5rem !important;
+}
+
+/* Personalización de Inputs */
+.form-select, .form-control {
+    background-color: #f8f9fa !important;
+    transition: 0.3s;
+}
+
+.form-select:focus, .form-control:focus {
+    background-color: #fff !important;
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.2) !important;
+}
+
+/* Iconos de los badges de abajo */
+.info-badges small {
+    display: block;
+    background: #f1d919;
+    color: #000;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: bold;
+}
+
+/* --- PALETA Y TIPOGRAFÍA --- */
+.text-dark-blue { color: #002b5c !important; }
+.btn-dark-blue { background-color: #002b5c !important; color: #fff !important; }
+.btn-dark-blue:hover { background-color: #001f42 !important; }
+
+.bg-light-gradient {
+    background: radial-gradient(circle at top left, #ffffff 60%, rgba(241, 217, 25, 0.05) 100%);
+}
+
+/* --- TARJETAS DE BENEFICIOS (IZQUIERDA) --- */
+.benefit-inv-card {
+    border: 1px solid #f0f2f5;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+.icon-inv {
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+}
+.bg-primary-light { background-color: rgba(0, 43, 92, 0.1); }
+.bg-warning-light { background-color: rgba(243, 156, 18, 0.1); }
+.bg-success-light { background-color: rgba(40, 167, 69, 0.1); }
+.bg-info-light { background-color: rgba(23, 162, 184, 0.1); }
+
+.mini-line {
+    width: 25px; height: 3px;
+    background-color: #F39C12;
+    margin-top: 15px;
+    border-radius: 2px;
+}
+
+/* --- ESTILOS DEL SIMULADOR (DERECHA) --- */
+.simulator-header {
+    background: linear-gradient(135deg, #002b5c 0%, #004085 100%);
+    position: relative;
+}
+.simulator-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 150px; height: 100%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M0,100 C50,50 50,100 100,0 L100,100 Z' fill='%23F39C12' opacity='0.3'/%3E%3C/svg%3E");
+    background-size: cover;
+}
+.header-icon-box {
+    width: 45px; height: 45px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* Campos Custom */
+.input-custom-group {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+}
+.bg-light-input { background-color: #f8f9fa; }
+.input-custom-group input, .input-custom-group select {
+    background: transparent !important;
+}
+
+/* Botones de Plazo Rápido */
+.fast-plazo-wrapper .btn-fast-plazo {
+    flex: 1;
+    min-width: 85px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    color: #495057;
+    font-weight: 600;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+.fast-plazo-wrapper .btn-fast-plazo.active,
+.fast-plazo-wrapper .btn-fast-plazo:hover {
+    background-color: #F39C12 !important;
+    color: #ffffff !important;
+    border-color: #F39C12 !important;
+}
+
+/* Panel de Resultados (Efecto Verde Claro) */
+.results-display-panel {
+    background-color: #f4f9f4;
+    border: 1px solid #e1f0e1;
+}
+.circle-result {
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background-color: #28a745 !important;
+}
+/* --- BARRA DE SOPORTE INFERIOR --- */
+.support-footer-bar {
+    background-color: #002b5c !important; /* Azul Marino Institucional */
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Círculo decorativo transparente de fondo */
+.support-footer-bar::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: rgba(241, 217, 25, 0.05);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.icon-support-box {
+    width: 55px;
+    height: 55px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efecto hover en el botón de WhatsApp */
+.transition-btn {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.transition-btn:hover {
+    background-color: #e5cd17 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(241, 217, 25, 0.3) !important;
+}

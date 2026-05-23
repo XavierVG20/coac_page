@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Contacto extends Model
+{
+    protected $fillable = [
+    'nombre',
+    'apellido',
+    'dni',
+    'email',
+    'asunto',
+    'mensaje',
+    'acepta_politica'
+];
+}
