@@ -957,15 +957,14 @@
 
 .mini-line {
     width: 25px; height: 3px;
-    background-color: #F39C12;
+    background-color:  #f1c40f;
     margin-top: 15px;
     border-radius: 2px;
 }
 
 /* --- ESTILOS DEL SIMULADOR (DERECHA) --- */
 .simulator-header {
-    background: linear-gradient(135deg, #002b5c 0%, #004085 100%);
-    position: relative;
+background: linear-gradient(135deg, #f1c40f 0%, #f1c40f 50%, #f7dc6f 100%);    position: relative;
 }
 .simulator-header::after {
     content: '';
@@ -1008,9 +1007,9 @@
 }
 .fast-plazo-wrapper .btn-fast-plazo.active,
 .fast-plazo-wrapper .btn-fast-plazo:hover {
-    background-color: #F39C12 !important;
+    background-color:  #f1c40f !important;
     color: #ffffff !important;
-    border-color: #F39C12 !important;
+    border-color:  #f1c40f !important;
 }
 
 /* Panel de Resultados (Efecto Verde Claro) */
