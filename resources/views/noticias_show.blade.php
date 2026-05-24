@@ -1,5 +1,8 @@
 @extends('layouts.base')
+@section('meta_title', $noticia->slug)
 
+@section('meta_description', $noticia->meta_description )
+@section('meta_keywords', $noticia->meta_description)
 @section('content')
    <!-- Blog Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
