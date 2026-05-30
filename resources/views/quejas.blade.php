@@ -8,19 +8,15 @@
 
 <!-- HEADER -->
 <div class="container-fluid bg-primary py-5 bg-header"
-    style="background-image: url('{{ $slider
-        ? asset('uploads/sliders/' . $slider->imagen)
-        : asset('img/Recurso 1.png') }}');">
+    style="background-image: url('{{ $slider ? asset('uploads/sliders/'.$slider->imagen) : asset('img/Recurso 1.png') }}');">
 </div>
 
-<!-- Quejas y Reclamos Start -->
 <div class="container-fluid py-5 bg-light">
 
     <div class="container py-5">
 
-        <!-- TITULO -->
-        <div class="section-title text-center position-relative pb-3 mb-5 mx-auto wow fadeInUp"
-            data-wow-delay="0.1s" style="max-width: 700px;">
+        <div class="section-title text-center position-relative pb-3 mb-5 mx-auto"
+            style="max-width:700px;">
 
             <h5 class="fw-bold text-warning text-uppercase">
                 Atención al Usuario
@@ -30,9 +26,10 @@
                 Quejas y Reclamos
             </h1>
 
-            <p class="mt-3 text-muted">
-                En la Cooperativa Pujilí estamos comprometidos con la mejora continua
-                de nuestros servicios.
+            <p class="text-muted">
+                En la Cooperativa de Ahorro y Crédito Pujilí Ltda.
+                estamos comprometidos con la mejora continua de
+                nuestros servicios.
             </p>
 
         </div>
@@ -40,34 +37,36 @@
         <div class="row g-5">
 
             <!-- INFORMACIÓN -->
-            <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0.2s">
+            <div class="col-lg-5">
 
-                <div class="p-4 rounded shadow h-100"
-                    style="background:#ffffff; border-left:5px solid #D4A017;">
+                <div class="bg-white shadow rounded p-4 h-100"
+                    style="border-left:5px solid #D4A017;">
 
-                    <h4 class="text-dark mb-3">
+                    <h4 class="mb-3">
                         ¿Cómo podemos ayudarte?
                     </h4>
 
                     <p class="text-muted">
-                        Si tienes alguna queja, reclamo o sugerencia, puedes enviarnos
-                        tu solicitud a través del siguiente formulario.
-                        Nuestro equipo dará seguimiento oportuno a tu caso.
+
+                        Si tienes una queja, reclamo o sugerencia,
+                        puedes enviarnos tu solicitud mediante el
+                        siguiente formulario.
+
                     </p>
 
-                    <ul class="list-unstyled mt-4">
+                    <ul class="list-unstyled">
 
-                        <li class="mb-3">
+                        <li class="mb-2">
                             <i class="fa fa-check text-warning me-2"></i>
                             Atención personalizada
                         </li>
 
-                        <li class="mb-3">
+                        <li class="mb-2">
                             <i class="fa fa-check text-warning me-2"></i>
-                            Respuesta oportuna
+                            Seguimiento oportuno
                         </li>
 
-                        <li class="mb-3">
+                        <li class="mb-2">
                             <i class="fa fa-check text-warning me-2"></i>
                             Confidencialidad garantizada
                         </li>
@@ -76,12 +75,14 @@
 
                     <hr>
 
-                    <p class="mb-2">
-                        <strong>Email:</strong> {{ $info->email }}
+                    <p>
+                        <strong>Email:</strong>
+                        {{ $info->email }}
                     </p>
 
-                    <p class="mb-0">
-                        <strong>Teléfono:</strong> {{ $info->telefono }}
+                    <p>
+                        <strong>Teléfono:</strong>
+                        {{ $info->telefono }}
                     </p>
 
                 </div>
@@ -89,101 +90,143 @@
             </div>
 
             <!-- FORMULARIO -->
-            <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.4s">
+            <div class="col-lg-7">
 
-                <div class="p-4 rounded shadow"
-                    style="background:#ffffff;">
+                <div class="bg-white shadow rounded p-4">
 
-                    <form action="#" method="POST">
+                    {{-- MENSAJE ÉXITO --}}
+                    @if(session('success'))
+
+                        <div class="alert alert-success alert-dismissible fade show">
+
+                            {{ session('success') }}
+
+                            <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert">
+                            </button>
+
+                        </div>
+
+                    @endif
+
+                    {{-- ERRORES --}}
+                    @if ($errors->any())
+
+                        <div class="alert alert-danger">
+
+                            <ul class="mb-0">
+
+                                @foreach ($errors->all() as $error)
+
+                                    <li>{{ $error }}</li>
+
+                                @endforeach
+
+                            </ul>
+
+                        </div>
+
+                    @endif
+
+                    <form action="{{ route('quejas.store') }}"
+                        method="POST">
 
                         @csrf
 
-                        <div class="row g-3">
+                        <!-- ANÓNIMO -->
+                        <div class="form-check mb-3">
 
-                            <!-- OPCIÓN ANÓNIMO -->
-                            <div class="col-12">
+                            <input class="form-check-input"
+                                type="checkbox"
+                                id="anonimoCheck"
+                                name="anonimo"
+                                value="1">
 
-                                <div class="form-check mb-2">
+                            <label class="form-check-label"
+                                for="anonimoCheck">
 
-                                    <input class="form-check-input"
-                                        type="checkbox"
-                                        id="anonimoCheck">
+                                Enviar solicitud de forma anónima
 
-                                    <label class="form-check-label fw-semibold"
-                                        for="anonimoCheck">
+                            </label>
 
-                                        Enviar solicitud de forma anónima
+                        </div>
 
-                                    </label>
+                        <div class="alert alert-warning small">
+
+                            Las solicitudes anónimas pueden limitar
+                            el seguimiento y respuesta personalizada.
+
+                        </div>
+
+                        <!-- DATOS PERSONALES -->
+                        <div id="datosPersonales">
+
+                            <div class="row g-3">
+
+                                <div class="col-md-6">
+
+                                    <input type="text"
+                                        name="nombre"
+                                        value="{{ old('nombre') }}"
+                                        class="form-control"
+                                        placeholder="Nombres"
+                                        required>
 
                                 </div>
 
-                                <div class="alert alert-warning small">
-                                    Las solicitudes anónimas pueden limitar
-                                    el seguimiento y respuesta personalizada.
+                                <div class="col-md-6">
+
+                                    <input type="text"
+                                        name="apellidos"
+                                        value="{{ old('apellidos') }}"
+                                        class="form-control"
+                                        placeholder="Apellidos"
+                                        required>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <input type="email"
+                                        name="email"
+                                        value="{{ old('email') }}"
+                                        class="form-control"
+                                        placeholder="Correo electrónico"
+                                        required>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <input type="text"
+                                        name="telefono"
+                                        value="{{ old('telefono') }}"
+                                        class="form-control"
+                                        placeholder="Teléfono">
+
+                                </div>
+
+                                <div class="col-md-12">
+
+                                    <input type="text"
+                                        name="identificacion"
+                                        value="{{ old('identificacion') }}"
+                                        class="form-control"
+                                        placeholder="Número de identificación">
+
                                 </div>
 
                             </div>
 
-                            <!-- DATOS PERSONALES -->
-                            <div id="datosPersonales">
+                        </div>
 
-                                <div class="row g-3">
+                        <div class="row g-3 mt-2">
 
-                                    <div class="col-md-6">
-                                        <input type="text"
-                                            name="nombre"
-                                            class="form-control border-0 bg-light px-4"
-                                            placeholder="Nombres"
-                                            required
-                                            style="height: 55px;">
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <input type="text"
-                                            name="apellidos"
-                                            class="form-control border-0 bg-light px-4"
-                                            placeholder="Apellidos"
-                                            required
-                                            style="height: 55px;">
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <input type="email"
-                                            name="email"
-                                            class="form-control border-0 bg-light px-4"
-                                            placeholder="Correo electrónico"
-                                            required
-                                            style="height: 55px;">
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <input type="text"
-                                            name="telefono"
-                                            class="form-control border-0 bg-light px-4"
-                                            placeholder="Teléfono"
-                                            style="height: 55px;">
-                                    </div>
-
-                                    <!-- IDENTIFICACIÓN -->
-                                    <div class="col-md-12">
-                                        <input type="text"
-                                            name="identificacion"
-                                            class="form-control border-0 bg-light px-4"
-                                            placeholder="Número de identificación"
-                                            style="height: 55px;">
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <!-- TIPO -->
                             <div class="col-md-6">
 
                                 <select name="tipo"
-                                    class="form-control border-0 bg-light px-4"
-                                    style="height: 55px;"
+                                    class="form-select"
                                     required>
 
                                     <option value="">
@@ -206,90 +249,111 @@
 
                             </div>
 
-                            <!-- AGENCIAS -->
                             <div class="col-md-6">
 
                                 <select name="agencia"
-                                    class="form-control border-0 bg-light px-4"
-                                    style="height: 55px;">
+                                    class="form-select">
 
                                     <option value="">
                                         Seleccione una agencia
                                     </option>
 
                                     <option value="matriz">
-                                        Matriz
+                                        Matriz Pujilí
                                     </option>
 
                                     <option value="latacunga">
                                         Latacunga
                                     </option>
 
-                                    <option value="saquisili">
+                                    <option value="salcedo">
                                         Salcedo
                                     </option>
-                                      <option value="saquisili">
-                                        La Mana
-                                    </option>
-                                       <option value="saquisili">
-                                        Quito
+
+                                    <option value="la_mana">
+                                        La Maná
                                     </option>
 
-                                       <option value="saquisili">
-                                        Pillaro
+                                    <option value="quito_sur">
+                                        Quito Sur
+                                    </option>
+
+                                    <option value="pillaro">
+                                        Píllaro
                                     </option>
 
                                 </select>
 
                             </div>
 
-                            <!-- ASUNTO -->
                             <div class="col-12">
 
                                 <input type="text"
                                     name="asunto"
-                                    class="form-control border-0 bg-light px-4"
-                                    placeholder="Asunto"
-                                    style="height: 55px;">
+                                    value="{{ old('asunto') }}"
+                                    class="form-control"
+                                    placeholder="Asunto">
 
                             </div>
 
-                            <!-- MENSAJE -->
                             <div class="col-12">
 
-                                <textarea name="mensaje"
-                                    class="form-control border-0 bg-light px-4 py-3"
+                                <textarea
+                                    name="mensaje"
                                     rows="5"
-                                    placeholder="Detalle de su solicitud"
-                                    required></textarea>
+                                    class="form-control"
+                                    placeholder="Detalle de la solicitud"
+                                    required>{{ old('mensaje') }}</textarea>
 
                             </div>
 
-                            <!-- PROTECCIÓN DE DATOS -->
+                            <!-- POLÍTICA -->
                             <div class="col-12">
 
                                 <div class="form-check">
 
-                                   <input class="form-check-input" type="checkbox" name="politica">
-                                    <label class="form-check-label small">
+                                    <input class="form-check-input"
+                                        type="checkbox"
+                                        name="politica"
+                                        value="1"
+                                     >
+
+                                    <label class="form-check-label">
+
                                         He leído y acepto el
-                                        <a href="{{ route('aviso_privacidad') }}" target="_blank">
-                                            Aviso de Privacidad y Tratamiento de Datos Personales
-                                        </a>.
+
+                                        <a href="{{ route('aviso_privacidad') }}"
+                                            target="_blank">
+
+                                            Aviso de Privacidad y
+                                            Tratamiento de Datos Personales
+
+                                        </a>
+
                                     </label>
 
                                 </div>
 
+                                <small class="text-muted">
+
+                                    Al enviar este formulario acepta
+                                    el tratamiento de sus datos
+                                    conforme a la Ley Orgánica de
+                                    Protección de Datos Personales
+                                    del Ecuador.
+
+                                </small>
+
                             </div>
 
-                            <!-- BOTÓN -->
                             <div class="col-12">
 
-                                <button class="btn btn-warning w-100 py-3 fw-semibold"
-                                    type="submit">
+                                <button type="submit"
+                                    class="btn btn-warning w-100 py-3">
 
                                     <i class="fa fa-paper-plane me-2"></i>
-                                    Enviar solicitud
+
+                                    Enviar Solicitud
 
                                 </button>
 
@@ -308,43 +372,51 @@
     </div>
 
 </div>
-<!-- Quejas y Reclamos End -->
 
-<!-- SCRIPT ANÓNIMO -->
 <script>
 
-    const anonimoCheck = document.getElementById('anonimoCheck');
-    const datosPersonales = document.getElementById('datosPersonales');
+document.addEventListener('DOMContentLoaded', function () {
+
+    const anonimoCheck =
+        document.getElementById('anonimoCheck');
+
+    const datosPersonales =
+        document.getElementById('datosPersonales');
 
     anonimoCheck.addEventListener('change', function () {
 
-        if (this.checked) {
+        if(this.checked){
 
             datosPersonales.style.display = 'none';
 
-            datosPersonales.querySelectorAll('input').forEach(input => {
-                input.required = false;
-            });
+            datosPersonales
+                .querySelectorAll('input')
+                .forEach(input => {
 
-        } else {
+                    input.required = false;
+
+                });
+
+        }else{
 
             datosPersonales.style.display = 'block';
 
-            datosPersonales.querySelectorAll('input').forEach(input => {
+            document
+                .querySelector('[name="nombre"]')
+                .required = true;
 
-                if (
-                    input.name === 'nombre' ||
-                    input.name === 'apellidos' ||
-                    input.name === 'email'
-                ) {
-                    input.required = true;
-                }
+            document
+                .querySelector('[name="apellidos"]')
+                .required = true;
 
-            });
-
+            document
+                .querySelector('[name="email"]')
+                .required = true;
         }
 
     });
+
+});
 
 </script>
 

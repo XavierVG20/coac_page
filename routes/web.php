@@ -43,6 +43,8 @@ Route::get('/educacion', [EducacionController::class, 'index'])->name('educacion
 
 Route::get('/nosotros', [NosotrosController::class, 'index'])->name('nosotros');
 Route::get('/quejas', [QuejasController::class, 'index'])->name('quejas');
+Route::post('/quejas', [QuejasController::class, 'store'])
+    ->name('quejas.store');
 Route::get('/aviso_privacidad', [AvidoPDController::class, 'index'])->name('aviso_privacidad');
 
 
