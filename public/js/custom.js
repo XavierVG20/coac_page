@@ -64,76 +64,192 @@ function calcularCredito() {
 
 
 /* ===================== INVERSION ===================== */
+
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Capturar los elementos de la interfaz
+
     const btnPlazos = document.querySelectorAll('.btn-fast-plazo');
+
     const selectPlazo = document.getElementById('invPlazo');
+
     const inputMonto = document.getElementById('invMonto');
+
     const inputTasa = document.getElementById('invTasa');
 
-    // 2. Escuchar los clics en los botones de plazo rápido (6, 12, 24... meses)
+    /* ===================== BOTONES PLAZO ===================== */
+
     btnPlazos.forEach(btn => {
+
         btn.addEventListener('click', function() {
-            // Alternar clases visuales de los botones
-            btnPlazos.forEach(b => b.classList.remove('active'));
+
+            btnPlazos.forEach(b =>
+                b.classList.remove('active')
+            );
+
             this.classList.add('active');
 
-            // Sincronizar el valor con el select oculto/visible
-            const meses = this.getAttribute('data-months');
+            const meses =
+                this.getAttribute('data-months');
+
             selectPlazo.value = meses;
 
-            // Calcular inmediatamente
+            actualizarTasa();
+
             calcularInversion();
+
         });
+
     });
 
-    // 3. Escuchar cambios manuales en los inputs para que sea interactivo
-    if (selectPlazo) selectPlazo.addEventListener('change', function() {
-        // Sincronizar el botón rápido si el usuario cambia el select manualmente
-        btnPlazos.forEach(b => {
-            b.classList.toggle('active', b.getAttribute('data-months') === this.value);
+    /* ===================== INPUT MONTO ===================== */
+
+    if (inputMonto) {
+
+        inputMonto.addEventListener('input', function() {
+
+            actualizarTasa();
+
+            calcularInversion();
+
         });
-        calcularInversion();
-    });
 
-    if (inputMonto) inputMonto.addEventListener('input', calcularInversion);
-    if (inputTasa) inputTasa.addEventListener('input', calcularInversion);
-    
-    // 4. Ejecutar un cálculo inicial al cargar la página por primera vez
-    calcularInversion();
-});
-function calcularInversion() {
-// Obtener los valores actuales de los inputs
-    let monto = parseFloat(document.getElementById("invMonto").value);
-    let plazo = parseInt(document.getElementById("invPlazo").value);
-    let tasaOriginal = parseFloat(document.getElementById("invTasa").value);
-
-    // Validaciones de control por seguridad
-    if (isNaN(monto) || isNaN(plazo) || isNaN(tasaOriginal) || monto <= 0 || plazo <= 0 || tasaOriginal <= 0) {
-        // Si los datos están vacíos o erróneos, reseteamos los paneles a 0 sin romper el sistema
-        document.getElementById("invMontoBase").innerText = "$0.00";
-        document.getElementById("invGanancia").innerText = "$0.00";
-        document.getElementById("invResultado").innerText = "$0.00";
-        return; 
     }
 
-    // Actualizar etiquetas informativas de la parte inferior de la tarjeta
-    document.getElementById("resumenTasa").innerText = tasaOriginal.toFixed(2) + "%";
-    document.getElementById("resumenPlazo").innerText = plazo + " meses";
-    document.getElementById("invMontoBase").innerText = "$" + monto.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    /* ===================== CAMBIO SELECT ===================== */
 
-    /* FÓRMULA FINANCIERA REAL (D.P.F.):
-       Ganancia = Monto Invertido * (Tasa Anual / 100) * (Meses del Plazo / 12)
-    */
-    let tasaAnualDecimal = tasaOriginal / 100;
-    let ganancia = monto * tasaAnualDecimal * (plazo / 12);
-    let montoFinal = monto + ganancia;
+    if (selectPlazo) {
 
-    // Disparar las animaciones con los valores calculados exactos
-    animarValor("invGanancia", ganancia);
-    animarValor("invResultado", montoFinal);
+        selectPlazo.addEventListener('change', function() {
+
+            btnPlazos.forEach(b => {
+
+                b.classList.toggle(
+                    'active',
+                    b.getAttribute('data-months') === this.value
+                );
+
+            });
+
+            actualizarTasa();
+
+            calcularInversion();
+
+        });
+
+    }
+
+    actualizarTasa();
+
+    calcularInversion();
+
+});
+
+
+/* ===================== TASA AUTOMÁTICA ===================== */
+
+function actualizarTasa() {
+
+    let monto =
+        parseFloat(document.getElementById("invMonto").value);
+
+    let plazo =
+        parseInt(document.getElementById("invPlazo").value);
+
+    let tasa = 0;
+
+    /* ===== TABLA DE TASAS ===== */
+
+    if (monto >= 500 && monto < 1000) {
+
+        if (plazo == 6) tasa = 4;
+        if (plazo == 12) tasa = 5;
+        if (plazo == 24) tasa = 6;
+        if (plazo == 36) tasa = 7;
+        if (plazo == 48) tasa = 8;
+
+
+    }
+
+    else if (monto >= 1000 && monto < 5000) {
+
+        if (plazo == 6) tasa = 9;
+        if (plazo == 12) tasa = 10;
+        if (plazo == 24) tasa = 11;
+
+    }
+
+    else if (monto >= 5000) {
+
+        if (plazo == 6) tasa = 9;
+        if (plazo == 12) tasa = 10;
+        if (plazo == 24) tasa = 12;
+
+    }
+
+    // Asignar tasa automática
+    document.getElementById("invTasa").value = tasa;
+
 }
 
+
+/* ===================== CALCULAR ===================== */
+
+function calcularInversion() {
+
+    let monto =
+        parseFloat(document.getElementById("invMonto").value);
+
+    let plazo =
+        parseInt(document.getElementById("invPlazo").value);
+
+    let tasaOriginal =
+        parseFloat(document.getElementById("invTasa").value);
+
+    if (
+        isNaN(monto) ||
+        isNaN(plazo) ||
+        isNaN(tasaOriginal) ||
+        monto <= 0
+    ) {
+
+        document.getElementById("invMontoBase").innerText = "$0.00";
+
+        document.getElementById("invGanancia").innerText = "$0.00";
+
+        document.getElementById("invResultado").innerText = "$0.00";
+
+        return;
+
+    }
+
+    // Resumen
+    document.getElementById("resumenTasa").innerText =
+        tasaOriginal.toFixed(2) + "%";
+
+    document.getElementById("resumenPlazo").innerText =
+        plazo + " meses";
+
+    document.getElementById("invMontoBase").innerText =
+        "$" + monto.toLocaleString('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        });
+
+    // Fórmula
+    let tasaAnualDecimal = tasaOriginal / 100;
+
+    let ganancia =
+        monto *
+        tasaAnualDecimal *
+        (plazo / 12);
+
+    let montoFinal = monto + ganancia;
+
+    // Mostrar resultados
+    animarValor("invGanancia", ganancia);
+
+    animarValor("invResultado", montoFinal);
+
+}
 
 /* ===================== ANIMACION ===================== */
 function animarValor(id, valorFinal) {

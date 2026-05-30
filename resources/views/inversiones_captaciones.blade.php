@@ -158,7 +158,7 @@
                         <div class="mb-4">
                             <label class="fw-bold text-dark-blue small mb-2">Tasa anual (%)</label>
                             <div class="input-group input-custom-group align-items-center bg-light-input">
-                                <input type="number" id="invTasa" class="form-control border-0 bg-transparent p-3" value="8.00" step="0.01">
+                                <input type="number" id="invTasa" class="form-control border-0 bg-transparent p-3" value="8.00" readonly step="0.01">
                                 <span class="badge bg-success-light text-success me-3 py-2 px-3 rounded-pill fw-bold" style="font-size: 12px;">Tasa fija</span>
                             </div>
                         </div>

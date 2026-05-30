@@ -25,37 +25,57 @@ class ContactoController extends Controller
     {
         $agent = new Agent();
 
-       
+$fecha = Carbon::now()
+    ->locale('es')
+    ->isoFormat('dddd D [de] MMMM [de] YYYY');
 
-        // Datos
-        $fecha = Carbon::now()->locale('es')->isoFormat('dddd D [de] MMMM [de] YYYY');
-        $hora = now()->format('H:i:s');
-        $ip = $request->ip();
-        $dispositivo = $agent->isMobile() ? 'Dispositivo móvil' : 'Computador';
-        $maskdni = str_repeat('*', strlen($request->dni) - 3) . substr($request->dni, -3);
-        $urlPrivacidad = route('aviso_privacidad');
-       $correoDestino = env('MAIL_FROM_ADDRESS');
+$hora = now()->format('H:i:s');
+$ip = $request->ip();
+$dispositivo = $agent->isMobile() ? 'Móvil' : 'Computador';
 
-       
+$dni = $request->dni ?? '';
+
+// =========================
+// DNI SEGURO (NO ROMPE)
+// =========================
+if (strlen($dni) >= 3) {
+    $maskdni = str_repeat('*', strlen($dni) - 3) . substr($dni, -3);
+} else {
+    $maskdni = $dni;
+}
+
+$urlPrivacidad = route('aviso_privacidad');
+$correoDestino = env('MAIL_FROM_ADDRESS'); // correo institucional
+
+// =========================
+// VALIDACIÓN BÁSICA
+// =========================
+if (!$correoDestino) {
+    return back()->with('error', 'MAIL_FROM_ADDRESS no configurado');
+}
 
 if ($request->has('politica')) {
 
     // =========================
-    // MENSAJE SI ACEPTA
+    // GUARDAR DATOS
     // =========================
-  $contacto = Contacto::create([
-            'nombre' => $request->nombre,
-            'apellido' => $request->apellido,
-            'dni' => $request->dni,
-            'email' => $request->email,
-            'asunto' => $request->asunto,
-            'mensaje' => $request->mensaje,
-            'cedula' => $request->cedula,
-            'ip' => $ip,
-            'dispositivo' => $agent->isMobile() ? 'Móvil' : 'Computador',
-            'acepta_politica' => $request->has('politica'),
-            'fecha_consentimiento' => now(),
-        ]);
+    $contacto = Contacto::create([
+        'nombre' => $request->nombre ?? 'S/N',
+        'apellido' => $request->apellido ?? 'S/N',
+        'dni' => $dni,
+        'email' => $request->email,
+        'asunto' => $request->asunto,
+        'mensaje' => $request->mensaje,
+        'cedula' => $request->cedula,
+        'ip' => $ip,
+        'dispositivo' => $dispositivo,
+        'acepta_politica' => true,
+        'fecha_consentimiento' => now(),
+    ]);
+
+    // =========================
+    // HTML CORREO (ACEPTA)
+    // =========================
 
     $html = "
     <p><strong>Código Secuencial:</strong> {$contacto->id}</p>
@@ -88,31 +108,39 @@ if ($request->has('politica')) {
 
     <p>Atentamente,<br><strong>COAC PUJILÍ</strong></p>
     ";
-
+    // =========================
+    // ENVÍO SEGURO
+    // =========================
     Mail::html($html, function ($mail) use ($request, $correoDestino) {
+
         $mail->to($request->email)
-            ->cc($correoDestino)
-            ->subject('Confirmación de consentimiento de datos');
+            ->cc($correoDestino) // 🔥 COPIA SEGURA (NO CC)
+            ->subject('Confirmación de consentimiento');
+
     });
 
 } else {
 
     // =========================
-    // MENSAJE SI NO ACEPTA
+    // GUARDAR DATOS (NO ACEPTA)
     // =========================
-  $contacto = Contacto::create([
-            'nombre' => 'S/N',
-            'apellido' => 'S/N',
-            'dni' => $maskdni ,
-            'email' => $request->email,
-            'asunto' => $request->asunto,
-            'mensaje' => $request->mensaje,
-            'cedula' => $request->cedula,
-            'ip' => $ip,
-            'dispositivo' => $agent->isMobile() ? 'Móvil' : 'Computador',
-            'acepta_politica' => $request->has('politica'),
-            'fecha_consentimiento' => now(),
-        ]);
+    $contacto = Contacto::create([
+        'nombre' => 'S/N',
+        'apellido' => 'S/N',
+        'dni' => $maskdni,
+        'email' => $request->email,
+        'asunto' => $request->asunto,
+        'mensaje' => $request->mensaje,
+        'cedula' => $request->cedula,
+        'ip' => $ip,
+        'dispositivo' => $dispositivo,
+        'acepta_politica' => false,
+        'fecha_consentimiento' => now(),
+    ]);
+
+    // =========================
+    // HTML CORREO (NO ACEPTA)
+    // =========================
     $htmlNoAcepta = "
     <p>Estimado(a) <strong>{$request->nombre}</strong>,</p>
 
@@ -137,10 +165,15 @@ if ($request->has('politica')) {
     <p>Atentamente,<br><strong>COAC PUJILÍ</strong></p>
     ";
 
+    // =========================
+    // ENVÍO SEGURO
+    // =========================
     Mail::html($htmlNoAcepta, function ($mail) use ($request, $correoDestino) {
+
         $mail->to($request->email)
-            ->cc($correoDestino)
-            ->subject('Aviso de protección de datos personales');
+            ->cc($correoDestino) // 🔥 IMPORTANTE
+            ->subject('Aviso de privacidad');
+
     });
 }
 

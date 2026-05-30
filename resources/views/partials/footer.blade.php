@@ -1,5 +1,5 @@
 <!-- Footer Start -->
-<div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
+<div class="container-fluid text-light mt-5 wow fadeInUp"  style="background: #334155; data-wow-delay="0.1s">
     <div class="container">
         <div class="row gx-5">
             <div class="col-lg-4 col-md-12 footer-about">
@@ -85,10 +85,10 @@
 <div class="container-fluid text-white" style="background: #061429;">
     <div class="container text-center">
         <div class="row justify-content-end">
-            <div class="col-lg-12 col-md-6">
+            <div class="col-lg-12 col-md-3">
                 <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
                     <p class="mb-0">
-                        &copy; 2025 <strong>Cooperativa Pujilí</strong> | Todos los derechos reservados
+                        &copy; 2026 <strong>Cooperativa Pujilí</strong> | Todos los derechos reservados
                     </p>
                 </div>
             </div>
